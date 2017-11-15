@@ -30,6 +30,7 @@ namespace ListProcessing
                     default: ErrorMsg.ErrorMessage(); break;
                 }
             }
+            Console.WriteLine("Finished");
         }
     
     }
