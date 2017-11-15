@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ListProcessing
 {
-    public class PrependCommand
+    class RollRightCommand
     {
-        internal static void InsertStringInTheStart(string v, string[] inputLine)
+        internal static void RollRight(string[] inputLine)
         {
             throw new NotImplementedException();
         }

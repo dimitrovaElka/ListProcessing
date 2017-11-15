@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ListProcessing
 {
-    public class PrependCommand
+    class ErrorMsg
     {
-        internal static void InsertStringInTheStart(string v, string[] inputLine)
+        internal static void ErrorMessage()
         {
             throw new NotImplementedException();
         }

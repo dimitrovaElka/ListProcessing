@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ListProcessing
 {
-    public class PrependCommand
+    class CountCommand
     {
-        internal static void InsertStringInTheStart(string v, string[] inputLine)
+        internal static void CountString(string[] inputLine, string v)
         {
             throw new NotImplementedException();
         }

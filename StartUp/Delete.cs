@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ListProcessing
 {
-    public class PrependCommand
+    class Delete
     {
-        internal static void InsertStringInTheStart(string v, string[] inputLine)
+        internal static void DeleteIndex(string[] inputLine, string v)
         {
             throw new NotImplementedException();
         }

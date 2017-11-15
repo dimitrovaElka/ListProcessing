@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ListProcessing
 {
-    public class PrependCommand
+    public class AppendCommand
     {
-        internal static void InsertStringInTheStart(string v, string[] inputLine)
+        internal static void AddStringAtTheEnd(string v, object inputLine)
         {
             throw new NotImplementedException();
         }
