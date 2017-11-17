@@ -9,7 +9,7 @@ namespace ListProcessing
         static void Main(string[] args)
         {
             var inputLine = Console.ReadLine().Split(' ');
-            Console.WriteLine(String.Join(' ', inputLine));
+            //Console.WriteLine(String.Join(' ', inputLine));
             List<string> listToFill = new List<string>();
             foreach (var line in inputLine)
             {
@@ -35,12 +35,22 @@ namespace ListProcessing
                             inputLine = del.DeleteIndex(inputLine, command[1]).ToArray();
                             print.Print(inputLine.ToList());
                             break;
-                        //case "roll": 
-                        //	{
-                        //		if (commands[1] == "left") RollLeft(inputLine);
-                        //		else RollRight(inputLine);
-                        //	}
-                        //	break;
+                        case "roll":
+                            {
+                                if (command[1] == "left")
+                                {
+                                    var rollLeft = new RollLeftCommand();
+                                    inputLine = rollLeft.RollLeft(inputLine).ToArray();
+                                    print.Print(inputLine.ToList());
+                                }
+                                else
+                                {
+                                    var rollRight = new RollRightCommand();
+                                    inputLine = rollRight.RollRight(inputLine).ToArray();
+                                    print.Print(inputLine.ToList());
+                                }
+                            }
+                            break;
                         //case "sort": SortList(inputLine);break;
                         case "count":
                             var comm = new CountCommand();

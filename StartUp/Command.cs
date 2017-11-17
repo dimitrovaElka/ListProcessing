@@ -4,17 +4,18 @@ using System.Text;
 
 namespace ListProcessing
 {
-   public class Command
+    public class Command
     {
-        public void Print (List<string> printItems)
+        public void Print(List<string> printItems)
         {
             //foreach (var item in printItems)
             //{
-                Console.Write(String.Join(' ', printItems));
+            Console.Write(String.Join(' ', printItems));
+            Console.WriteLine();
             //}
         }
 
-        public void PrintErrorMessage (string Message)
+        public void PrintErrorMessage(string Message)
         {
             throw new ArgumentException($"Error: {Message}");
         }

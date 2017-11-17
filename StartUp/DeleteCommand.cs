@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ListProcessing
+﻿namespace ListProcessing
 {
-   public class DeleteCommand : Command
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class DeleteCommand : Command
     {
         public List<string> DeleteIndex(string[] inputLine, string v)
         {
