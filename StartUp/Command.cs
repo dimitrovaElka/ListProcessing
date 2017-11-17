@@ -8,15 +8,15 @@ namespace ListProcessing
     {
         public void Print (List<string> printItems)
         {
-            foreach (var item in printItems)
-            {
-                Console.WriteLine(String.Join(' ', item));
-            }
+            //foreach (var item in printItems)
+            //{
+                Console.Write(String.Join(' ', printItems));
+            //}
         }
 
-        public void PrintErrorMessage ()
+        public void PrintErrorMessage (string Message)
         {
-
+            throw new ArgumentException($"Error: {Message}");
         }
     }
 }

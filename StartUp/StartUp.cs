@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ListProcessing
 {
@@ -18,26 +19,41 @@ namespace ListProcessing
             var commandInput = string.Empty;
             while ((commandInput = Console.ReadLine()) != "end")
             {
-                var command = commandInput.Split(' ');
-                switch (command[0])
+                try
                 {
-                    //case "append": AddStringAtTheEnd(commands[1], inputLine); break;
-                    //case "prepend": InsertStringInTheStart(commands[1], inputLine); break;
-                    //case "reverse": ReverseList(inputLine); break;
-                    //case "insert": InsertStringAtThePosition(inputLine, commands[1]); break;
-                    //case "delete": DeleteIndex(inputLine, commands[1]); break;
-                    //case "roll": 
-                    //	{
-                    //		if (commands[1] == "left") RollLeft(inputLine);
-                    //		else RollRight(inputLine);
-                    //	}
-                    //	break;
-                    //case "sort": SortList(inputLine);break;
-                    case "count":
-                        var comm = new CountCommand();
-                        Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
+                    var command = commandInput.Split(' ');
+                    var print = new Command();
+
+                    switch (command[0])
+                    {
+                        //case "append": AddStringAtTheEnd(commands[1], inputLine); break;
+                        //case "prepend": InsertStringInTheStart(commands[1], inputLine); break;
+                        //case "reverse": ReverseList(inputLine); break;
+                        //case "insert": InsertStringAtThePosition(inputLine, commands[1]); break;
+                        case "delete":
+                            var del = new DeleteCommand();
+                            inputLine = del.DeleteIndex(inputLine, command[1]).ToArray();
+                            print.Print(inputLine.ToList());
+                            break;
+                        //case "roll": 
+                        //	{
+                        //		if (commands[1] == "left") RollLeft(inputLine);
+                        //		else RollRight(inputLine);
+                        //	}
+                        //	break;
+                        //case "sort": SortList(inputLine);break;
+                        case "count":
+                            var comm = new CountCommand();
+                            Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
                         //default: ErrorMessage(); break;
+                    }
                 }
+
+                catch (ArgumentException ae)
+                {
+                    Console.WriteLine(ae.Message);
+                }
+                
             }
             Console.WriteLine("Finished");
         }
