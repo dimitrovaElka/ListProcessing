@@ -6,5 +6,9 @@ namespace ListProcessing
 {
      public class ReverseCommand : Command
     {
+        public void Reverse(List<string> list)
+        {
+            list.Reverse();
+        }
     }
 }

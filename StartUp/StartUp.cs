@@ -9,7 +9,9 @@ namespace ListProcessing
         static void Main(string[] args)
         {
             var inputLine = Console.ReadLine().Split(' ');
-            //Console.WriteLine(String.Join(' ', inputLine));
+            // Print the list immediately after you read it (space separated).
+            Console.WriteLine(String.Join(' ', inputLine));
+
             List<string> listToFill = new List<string>();
             foreach (var line in inputLine)
             {
@@ -28,8 +30,31 @@ namespace ListProcessing
                     {
                         //case "append": AddStringAtTheEnd(commands[1], inputLine); break;
                         //case "prepend": InsertStringInTheStart(commands[1], inputLine); break;
-                        //case "reverse": ReverseList(inputLine); break;
-                        //case "insert": InsertStringAtThePosition(inputLine, commands[1]); break;
+                        case "reverse":
+                            //ReverseList(inputLine); 
+                            var rev = new ReverseCommand();
+                            rev.Reverse(listToFill);
+                            print.Print(listToFill);
+                            break;
+                        case "insert":
+                            //InsertStringAtThePosition(inputLine, commands[1]); 
+                            var index = 0;
+                            var indexIsNumber = int.TryParse(command[1], out index);
+                            if (!indexIsNumber)
+                            {
+                                string message = $"invalid index {index}";
+                                print.PrintErrorMessage(message);
+                            }
+                            if (command.Length < 3)
+                            {
+                                string message = $"invalid command";
+                                print.PrintErrorMessage(message);
+                            }
+                            var stringToInsert = command[2];
+                            var ins = new InsertCommand();
+                            ins.InsertIndex(index, stringToInsert, listToFill);
+                            print.Print(listToFill);
+                            break;
                         case "delete":
                             var del = new DeleteCommand();
                             inputLine = del.DeleteIndex(inputLine, command[1]).ToArray();
@@ -43,11 +68,15 @@ namespace ListProcessing
                                     inputLine = rollLeft.RollLeft(inputLine).ToArray();
                                     print.Print(inputLine.ToList());
                                 }
-                                else
+                                else if (command[1] == "right")
                                 {
                                     var rollRight = new RollRightCommand();
                                     inputLine = rollRight.RollRight(inputLine).ToArray();
                                     print.Print(inputLine.ToList());
+                                }
+                                else
+                                {
+                                    // Error: invalid command parameters
                                 }
                             }
                             break;
@@ -55,7 +84,9 @@ namespace ListProcessing
                         case "count":
                             var comm = new CountCommand();
                             Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
-                        //default: ErrorMessage(); break;
+                        default:
+                            print.PrintErrorMessage("invalid command");
+                            break;
                     }
                 }
 
