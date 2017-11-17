@@ -5,15 +5,15 @@ using System.Linq;
 
 namespace ListProcessing
 {
-  public  class CountCommand : Command
+    public class CountCommand : Command
     {
-        public int HowManyTimes (List<string> line, string strToFind)
+        public int HowManyTimes(List<string> line, string strToFind)
         {
             int count = line.Where(l => l.Equals(strToFind))
-            .Count(); 
+            .Count();
 
             return count;
         }
-        
+
     }
 }
