@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ListProcessing
 {
-    class AppendPrependCommand
+     public class AppendCommand : Command
     {
     }
 }
