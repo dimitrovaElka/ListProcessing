@@ -28,7 +28,9 @@ namespace ListProcessing
 
                     switch (command[0])
                     {
-                        //case "append": AddStringAtTheEnd(commands[1], inputLine); break;
+                        case "append":
+                            var appComm = new AppendCommand();
+                            appComm.AddStringAtTheEnd(command[1], listToFill); break;
                         //case "prepend": InsertStringInTheStart(commands[1], inputLine); break;
                         case "reverse":
                             //ReverseList(inputLine); 
@@ -57,7 +59,7 @@ namespace ListProcessing
                             break;
                         case "delete":
                             var del = new DeleteCommand();
-                            inputLine = del.DeleteIndex(inputLine, command[1]).ToArray();
+                            inputLine = del.DeleteIndex(listToFill, command[1]).ToArray();
                             print.Print(inputLine.ToList());
                             break;
                         case "roll":
@@ -85,7 +87,7 @@ namespace ListProcessing
                             var comm = new CountCommand();
                             Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
                         default:
-                            print.PrintErrorMessage("invalid command");
+                            print.PrintErrorMessage("Error: invalid command");
                             break;
                     }
                 }

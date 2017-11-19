@@ -8,11 +8,10 @@ namespace ListProcessing
 
     public class AppendCommand : Command
     {
-        internal static void AddStringAtTheEnd(string v, string[] inputLine)
+        public void AddStringAtTheEnd(string v, List<string> inputLine)
         {
-            List<string> lst = inputLine.ToList();
-            lst.Add(v);
-            Console.WriteLine(string.Join(' ',lst));
+            inputLine.Add(v);
+            Console.WriteLine(string.Join(' ',inputLine));
         }
     }
 }
