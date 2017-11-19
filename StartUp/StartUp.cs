@@ -32,6 +32,9 @@ namespace ListProcessing
                             var appComm = new AppendCommand();
                             appComm.AddStringAtTheEnd(command[1], listToFill); break;
                         //case "prepend": InsertStringInTheStart(commands[1], inputLine); break;
+                        case "prepend":
+                            var prepComm = new PrependCommand();
+                            prepComm.AddStringAtTheStart(command[1], listToFill); break;
                         case "reverse":
                             //ReverseList(inputLine); 
                             var rev = new ReverseCommand();
@@ -83,6 +86,9 @@ namespace ListProcessing
                             }
                             break;
                         //case "sort": SortList(inputLine);break;
+                        case "sort":
+                            var sortComm = new SortCommand();
+                            sortComm.Sort(listToFill); break;
                         case "count":
                             var comm = new CountCommand();
                             Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
