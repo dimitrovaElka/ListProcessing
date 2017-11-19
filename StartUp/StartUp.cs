@@ -88,7 +88,16 @@ namespace ListProcessing
                         //case "sort": SortList(inputLine);break;
                         case "sort":
                             var sortComm = new SortCommand();
-                            sortComm.Sort(listToFill); break;
+                            var lenght = command.Length;
+                            if (lenght > 1)
+                            {
+                                print.PrintErrorMessage("invalid command parameters");
+                            }
+                            else
+                            {
+                                sortComm.Sort(listToFill);
+                            }
+                            break;
                         case "count":
                             var comm = new CountCommand();
                             Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;

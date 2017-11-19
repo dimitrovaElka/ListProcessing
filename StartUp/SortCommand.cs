@@ -8,8 +8,8 @@ namespace ListProcessing
     {
         public void Sort(List<string> list)
         {
-            list.Sort();
-            Console.WriteLine(string.Join(' ', list));
+                list.Sort();
+                Console.WriteLine(string.Join(' ', list));
         }
     }
 }
