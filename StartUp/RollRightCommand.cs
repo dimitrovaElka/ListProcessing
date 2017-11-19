@@ -5,14 +5,11 @@
 
     public class RollRightCommand : Command
     {
-        public List<string> RollRight(string[] inputLine)
+        public void RollRight(List<string> inputLine)
         {
-            List<string> list = inputLine.ToList();
-            string LastToFirst = list[list.Count - 1];
-            list.RemoveAt(list.Count - 1);
-            list.Insert(0, LastToFirst);
-
-            return list;
+            string LastToFirst = inputLine[inputLine.Count - 1];
+            inputLine.RemoveAt(inputLine.Count - 1);
+            inputLine.Insert(0, LastToFirst);
         }   
     }
 }

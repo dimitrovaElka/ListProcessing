@@ -62,26 +62,41 @@ namespace ListProcessing
                             break;
                         case "delete":
                             var del = new DeleteCommand();
-                            inputLine = del.DeleteIndex(listToFill, command[1]).ToArray();
-                            print.Print(inputLine.ToList());
+                            var idx = 0;
+                            var IsNumber = int.TryParse(command[1], out idx);
+                            if (!IsNumber)
+                            {
+                                print.PrintErrorMessage("invalid command parameters");
+                            }
+                            if (idx < 0 || idx > listToFill.Count - 1)
+                            {
+                                string message = $"invalid index {idx}";
+                                print.PrintErrorMessage(message);
+                            }
+                            del.DeleteIndex(listToFill, idx);
+                            print.Print(listToFill.ToList());
                             break;
                         case "roll":
                             {
+                                if (command.Length != 2)
+                                {
+                                    print.PrintErrorMessage("invalid command parameters");
+                                }
                                 if (command[1] == "left")
                                 {
                                     var rollLeft = new RollLeftCommand();
-                                    inputLine = rollLeft.RollLeft(inputLine).ToArray();
-                                    print.Print(inputLine.ToList());
+                                    rollLeft.RollLeft(listToFill);
+                                    print.Print(listToFill);
                                 }
                                 else if (command[1] == "right")
                                 {
                                     var rollRight = new RollRightCommand();
-                                    inputLine = rollRight.RollRight(inputLine).ToArray();
-                                    print.Print(inputLine.ToList());
+                                    rollRight.RollRight(listToFill);
+                                    print.Print(listToFill);
                                 }
                                 else
                                 {
-                                    // Error: invalid command parameters
+                                    print.PrintErrorMessage("invalid command parameters");
                                 }
                             }
                             break;
@@ -102,7 +117,7 @@ namespace ListProcessing
                             var comm = new CountCommand();
                             Console.WriteLine(comm.HowManyTimes(listToFill, command[1])); break;
                         default:
-                            print.PrintErrorMessage("Error: invalid command");
+                            print.PrintErrorMessage("invalid command");
                             break;
                     }
                 }
@@ -111,7 +126,7 @@ namespace ListProcessing
                 {
                     Console.WriteLine(ae.Message);
                 }
-                
+
             }
             Console.WriteLine("Finished");
         }
