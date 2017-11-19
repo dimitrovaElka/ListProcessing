@@ -52,7 +52,7 @@ namespace ListProcessing
                             }
                             if (command.Length < 3)
                             {
-                                string message = $"invalid command";
+                                string message = $"invalid command parameters";
                                 print.PrintErrorMessage(message);
                             }
                             var stringToInsert = command[2];
